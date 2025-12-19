@@ -546,9 +546,9 @@ If you use FIRE-EDGE in your research, please cite:
 ## 📧 Contact
 
 **Research Team**:
-- **Ahmed S. Lotfy** - [ahmedsheriflotfy06@gmail.com](mailto:ahmedsheriflotfy06@gmail.com)
+- **Ahmed S. Lotfy** - [ahmedsheriflotfy06@gmail.com](mailto:ahmedsheriflotfy06@gmail.com) | [LinkedIn](https://www.linkedin.com/in/ahmed-sherif06/)
 - **Adham T. Sayed** - [adhamt864@gmail.com](mailto:adhamt864@gmail.com) | [LinkedIn](https://www.linkedin.com/in/adhamtamer/)
-- **Mena R. Ghanem** - [menaghanim863@gmail.com](mailto:menaghanim863@gmail.com)
+- **Mena R. Ghanem** - [menaghanim863@gmail.com](mailto:menaghanim863@gmail.com) | [LinkedIn](https://www.linkedin.com/in/mena-ghanim/)
 
 **Institution**: New Ismailia National University, Ismailia, Egypt
 
