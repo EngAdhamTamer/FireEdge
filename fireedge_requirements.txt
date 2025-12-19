@@ -1,0 +1,160 @@
+# FIRE-EDGE: Real-Time Firefighting Edge System
+# Python 3.8+ Dependencies
+
+# ============================================================================
+# CORE COMPUTER VISION & AI
+# ============================================================================
+opencv-python>=4.8.0              # Computer vision library
+opencv-contrib-python>=4.8.0      # Additional OpenCV modules
+ultralytics>=8.0.0                # YOLOv8 framework
+torch>=2.0.0,<2.2.0              # PyTorch (use specific version for Jetson)
+torchvision>=0.15.0,<0.17.0      # Computer vision models
+onnx>=1.14.0                      # ONNX model export
+onnxruntime>=1.15.0               # ONNX runtime (use onnxruntime-gpu on Jetson)
+
+# ============================================================================
+# SCIENTIFIC COMPUTING
+# ============================================================================
+numpy>=1.24.0,<2.0.0             # Numerical computing
+scipy>=1.10.0                     # Scientific algorithms (Kalman filter)
+matplotlib>=3.7.0                 # Plotting and visualization
+pandas>=2.0.0                     # Data manipulation
+scikit-learn>=1.3.0              # Machine learning utilities
+
+# ============================================================================
+# ROS DEPENDENCIES (Install via apt on Ubuntu)
+# ============================================================================
+# These are typically installed via:
+# sudo apt install ros-noetic-desktop-full
+# sudo apt install ros-noetic-gazebo-ros-pkgs
+# sudo apt install python3-rospy python3-roslib
+#
+# Python bindings (if needed):
+# rospkg>=1.5.0                   # ROS package utilities
+# catkin-tools>=0.9.0             # Catkin build tools
+# empy>=3.3.4                     # Template engine for ROS
+
+# ============================================================================
+# SENSOR INTERFACES & HARDWARE
+# ============================================================================
+pyserial>=3.5                     # Serial communication (IMU, ultrasonic)
+smbus2>=0.4.2                     # I2C communication (sensors)
+spidev>=3.6                       # SPI communication (FLIR Lepton)
+RPi.GPIO>=0.7.1                   # GPIO control (if using Raspberry Pi)
+jetson-stats>=4.2.0               # Jetson monitoring (Jetson only)
+
+# ============================================================================
+# THERMAL IMAGING (FLIR Lepton)
+# ============================================================================
+# pylepton3>=0.3.0                # FLIR Lepton Python library (if available)
+# Note: May need custom drivers from FLIR SDK
+
+# ============================================================================
+# IMAGE PROCESSING & AUGMENTATION
+# ============================================================================
+Pillow>=10.0.0                    # Image processing
+albumentations>=1.3.1             # Data augmentation
+imgaug>=0.4.0                     # Image augmentation
+
+# ============================================================================
+# KALMAN FILTER & SENSOR FUSION
+# ============================================================================
+filterpy>=1.4.5                   # Kalman filter implementation
+pykalman>=0.9.5                   # Alternative Kalman filter
+ahrs>=0.3.1                       # Attitude and Heading Reference Systems
+
+# ============================================================================
+# 3D VISUALIZATION & SIMULATION
+# ============================================================================
+# Open3D>=0.17.0                  # 3D data processing (LiDAR visualization)
+# pybullet>=3.2.5                 # Physics simulation (alternative to Gazebo)
+
+# ============================================================================
+# DATA LOGGING & RECORDING
+# ============================================================================
+h5py>=3.9.0                       # HDF5 file format (sensor logs)
+rosbag>=1.15.0                    # ROS bag files (if not using apt)
+pyyaml>=6.0                       # YAML configuration files
+
+# ============================================================================
+# PERFORMANCE OPTIMIZATION
+# ============================================================================
+numba>=0.57.0                     # JIT compilation for speed
+cython>=3.0.0                     # C extensions for Python
+
+# ============================================================================
+# DEVELOPMENT & TESTING
+# ============================================================================
+pytest>=7.4.0                     # Testing framework
+pytest-cov>=4.1.0                 # Coverage reports
+pytest-timeout>=2.1.0             # Test timeouts
+black>=23.7.0                     # Code formatting
+flake8>=6.1.0                     # Linting
+pylint>=2.17.0                    # Static analysis
+mypy>=1.5.0                       # Type checking
+isort>=5.12.0                     # Import sorting
+
+# ============================================================================
+# UTILITIES
+# ============================================================================
+tqdm>=4.66.0                      # Progress bars
+colorama>=0.4.6                   # Colored terminal output
+python-dotenv>=1.0.0              # Environment variables
+psutil>=5.9.5                     # System monitoring
+GPUtil>=1.4.0                     # GPU monitoring
+
+# ============================================================================
+# NETWORKING (for multi-agent future features)
+# ============================================================================
+requests>=2.31.0                  # HTTP requests
+websockets>=11.0.3                # WebSocket support
+flask>=2.3.0                      # Web server (for dashboard)
+socketio>=5.9.0                   # Real-time communication
+
+# ============================================================================
+# JETSON-SPECIFIC (Uncomment if deploying on Jetson Xavier NX)
+# ============================================================================
+# Install these manually on Jetson:
+# torch @ https://nvidia.box.com/shared/static/...  # Get from NVIDIA
+# torchvision @ https://nvidia.box.com/shared/static/...
+# onnxruntime-gpu>=1.15.0         # GPU-accelerated ONNX
+# tensorrt>=8.5.0                 # TensorRT for optimization
+# pycuda>=2022.1                  # CUDA Python bindings
+
+# ============================================================================
+# OPTIONAL: ADVANCED FEATURES
+# ============================================================================
+# voice-recognition>=0.10.0       # Voice commands (future)
+# pyttsx3>=2.90                   # Text-to-speech
+# sounddevice>=0.4.6              # Audio I/O
+# librosa>=0.10.0                 # Audio processing
+
+# ============================================================================
+# NOTES FOR INSTALLATION
+# ============================================================================
+# 
+# FOR UBUNTU 20.04 WITH ROS NOETIC:
+# 1. Install ROS first:
+#    sudo apt install ros-noetic-desktop-full
+#
+# 2. Install system dependencies:
+#    sudo apt install python3-pip python3-opencv
+#
+# 3. Create virtual environment:
+#    python3 -m venv venv
+#    source venv/bin/activate
+#
+# 4. Install requirements:
+#    pip install -r requirements.txt
+#
+# FOR JETSON XAVIER NX:
+# 1. Flash JetPack 5.1+
+# 2. Install PyTorch from NVIDIA:
+#    wget https://nvidia.box.com/shared/static/[torch-wheel].whl
+#    pip3 install torch-*.whl
+# 3. Install this requirements file (some packages pre-installed in JetPack)
+#
+# FOR SIMULATION ONLY (No hardware):
+# 1. Just install the base requirements above
+# 2. Skip sensor-specific packages (pyserial, smbus2, etc.)
+# 3. Use demo scripts with webcam or video files
