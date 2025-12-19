@@ -97,57 +97,57 @@ Existing AR systems for firefighters face critical limitations:
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                     HARDWARE LAYER                               │
-│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐       │
-│  │  FLIR    │  │  Garmin  │  │   MPU    │  │Ultrasonic│       │
-│  │ Lepton   │  │  LiDAR   │  │  9250    │  │  Sensors │       │
-│  │  3.5     │  │ Lite v3HP│  │   IMU    │  │(A02YYUW) │       │
-│  └────┬─────┘  └────┬─────┘  └────┬─────┘  └────┬─────┘       │
-└───────┼─────────────┼─────────────┼─────────────┼──────────────┘
+│                     HARDWARE LAYER                              │
+│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐         │
+│  │  FLIR    │  │  Garmin  │  │   MPU    │  │Ultrasonic│         │
+│  │ Lepton   │  │  LiDAR   │  │  9250    │  │  Sensors │         │
+│  │  3.5     │  │ Lite v3HP│  │   IMU    │  │(A02YYUW) │         │
+│  └────┬─────┘  └────┬─────┘  └────┬─────┘  └────┬─────┘         │
+└───────┼─────────────┼─────────────┼─────────────┼───────────────┘
         │             │             │             │
         ▼             ▼             ▼             ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│                    EDGE PROCESSING                               │
-│              NVIDIA Jetson Xavier NX (16GB)                      │
-│     384-core Volta GPU • 6-core ARM CPU • 21 TOPS                │
-│                                                                   │
-│  ┌──────────────────────────────────────────────────────────┐  │
-│  │              ROS NOETIC MIDDLEWARE                        │  │
-│  │  ┌─────────────────┐  ┌─────────────────┐               │  │
-│  │  │ /thermal_       │  │ /sensor_        │               │  │
-│  │  │  processor      │  │  fusion         │               │  │
-│  │  │                 │  │                 │               │  │
-│  │  │  YOLOv8n +      │  │  Kalman Filter  │               │  │
-│  │  │  TensorRT       │  │  (5-DoF state)  │               │  │
-│  │  │  FP16 Quant     │  │                 │               │  │
-│  │  └────────┬────────┘  └────────┬────────┘               │  │
-│  │           │                     │                        │  │
-│  │           └──────────┬──────────┘                        │  │
-│  │                      ▼                                    │  │
-│  │           ┌─────────────────────┐                        │  │
-│  │           │   /ar_display       │                        │  │
-│  │           │                     │                        │  │
-│  │           │  OpenCV Pipeline    │                        │  │
-│  │           │  Homography Align   │                        │  │
-│  │           └──────────┬──────────┘                        │  │
-│  └────────────────────────┼───────────────────────────────┘  │
-└─────────────────────────────┼───────────────────────────────────┘
-                              ▼
-                    ┌─────────────────────┐
-                    │  Kopin Lightning    │
-                    │  OLED (0.5")        │
-                    │  1280×720 | 10K nits│
-                    └─────────────────────┘
-                              │
-                              ▼
-                    ┌─────────────────────┐
-                    │   FIREFIGHTER       │
-                    │   AR OVERLAY        │
-                    │  • Hazard Alerts    │
-                    │  • Navigation Arrows│
-                    │  • Mini-Map         │
-                    │  • Return Path      │
-                    └─────────────────────┘
+│                    EDGE PROCESSING                              │
+│              NVIDIA Jetson Xavier NX (16GB)                     │
+│     384-core Volta GPU • 6-core ARM CPU • 21 TOPS               │
+│                                                                 │
+│  ┌──────────────────────────────────────────────────────────┐   │
+│  │              ROS NOETIC MIDDLEWARE                       │   │
+│  │  ┌─────────────────┐  ┌─────────────────┐                │   │
+│  │  │ /thermal_       │  │ /sensor_        │                │   │
+│  │  │  processor      │  │  fusion         │                │   │
+│  │  │                 │  │                 │                │   │
+│  │  │  YOLOv8n +      │  │  Kalman Filter  │                │   │
+│  │  │  TensorRT       │  │  (5-DoF state)  │                │   │
+│  │  │  FP16 Quant     │  │                 │                │   │
+│  │  └────────┬────────┘  └────────┬────────┘                │   │
+│  │           │                     │                        │   │
+│  │           └──────────┬──────────┘                        │   │
+│  │                      ▼                                   │   │
+│  │           ┌─────────────────────┐                        │   │
+│  │           │   /ar_display       │                        │   │
+│  │           │                     │                        │   │
+│  │           │  OpenCV Pipeline    │                        │   │
+│  │           │  Homography Align   │                        │   │
+│  │           └──────────┬──────────┘                        │   │
+│  └──────────────────────┼───────────────────────────────────┘   │
+└─────────────────────────┼───────────────────────────────────────┘
+                          ▼
+               ┌─────────────────────┐
+               │  Kopin Lightning    │
+               │  OLED (0.5")        │
+               │  1280×720 | 10K nits│
+               └─────────────────────┘
+                          │
+                          ▼
+               ┌─────────────────────┐
+               │   FIREFIGHTER       │
+               │   AR OVERLAY        │
+               │  • Hazard Alerts    │
+               │  • Navigation Arrows│
+               │  • Mini-Map         │
+               │  • Return Path      │
+               └─────────────────────┘
 ```
 
 ### Data Flow
@@ -331,21 +331,21 @@ python scripts/benchmark.py --scenario collapsing_structure
 
 ### Object Detection
 
-| Model | mAP@0.5 | Precision | Recall | Latency | Power |
-|-------|---------|-----------|--------|---------|-------|
+|         Model          |      mAP@0.5    |    Precision    |      Recall     |    Latency   |  Power  |
+|------------------------|-----------------|-----------------|-----------------|--------------|---------|
 | **FIRE-EDGE (Yellow)** | **85.0%** ± 1.8 | **89.2%** ± 2.3 | **86.1%** ± 2.7 | **35ms** ± 5 | **12W** |
-| FIRE-EDGE (Red) | 83.2% ± 2.1 | 85.4% ± 3.1 | 82.3% ± 3.5 | 42ms ± 6 | 12W |
-| Zhang et al. [1] | 83.2% | - | - | 800ms | - |
-| Lee et al. [2] | 82.5% | - | - | 50ms | 15W |
+|     FIRE-EDGE (Red)    |   83.2% ± 2.1   |   85.4% ± 3.1   |    82.3% ± 3.5  |   42ms ± 6   |   12W   |
+|    Zhang et al. [1]    |      83.2%      |         -       |        -        |     800ms    |    -    |
+|     Lee et al. [2]     |      82.5%      |         -       |        -        |     50ms     |    15W  |
 
 ### Navigation Accuracy
 
-| Metric | FIRE-EDGE | Baseline [1] | Improvement |
-|--------|-----------|--------------|-------------|
+|        Metric        |    FIRE-EDGE    |   Baseline [1]  |   Improvement  |
+|----------------------|-----------------|-----------------|----------------|
 | **Navigation Drift** | 0.3 ± 0.1 m/min | 0.5 ± 0.2 m/min | **40% better** |
-| **System Power** | 12 ± 0.5 W | 15 ± 1.0 W | 20% reduction |
-| **Battery Life** | 45 ± 3 min | 30 ± 5 min | 50% longer |
-| **Total Cost** | $2,470 | $5,200 | 52% cheaper |
+|   **System Power**   |   12 ± 0.5 W    |   15 ± 1.0 W    |  20% reduction |
+|   **Battery Life**   |   45 ± 3 min    |   30 ± 5 min    |   50% longer   |
+|    **Total Cost**    |     $2,470      |     $5,200      |   52% cheaper  |
 
 ### Key Achievements
 
